@@ -22,6 +22,8 @@
 		B19B318519C49EF200945FFC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B19B316919C49EF200945FFC /* CoreData.framework */; };
 		B19B318D19C49EF200945FFC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B19B318B19C49EF200945FFC /* InfoPlist.strings */; };
 		B19B318F19C49EF200945FFC /* iOS_TestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B19B318E19C49EF200945FFC /* iOS_TestTests.m */; };
+		B19B319A19C4D20A00945FFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B19B319C19C4D20A00945FFC /* Main.storyboard */; };
+		B1BA2DA719C4E66C00F496A8 /* IOSTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1BA2DA619C4E66C00F496A8 /* IOSTViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,9 @@
 		B19B318A19C49EF200945FFC /* iOS TestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOS TestTests-Info.plist"; sourceTree = "<group>"; };
 		B19B318C19C49EF200945FFC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B19B318E19C49EF200945FFC /* iOS_TestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iOS_TestTests.m; sourceTree = "<group>"; };
+		B19B319B19C4D20A00945FFC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B1BA2DA519C4E66C00F496A8 /* IOSTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSTViewController.h; sourceTree = "<group>"; };
+		B1BA2DA619C4E66C00F496A8 /* IOSTViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IOSTViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +125,8 @@
 				B19B317A19C49EF200945FFC /* Images.xcassets */,
 				B19B317719C49EF200945FFC /* iOS_Test.xcdatamodeld */,
 				B19B316C19C49EF200945FFC /* Supporting Files */,
+				B1BA2DA519C4E66C00F496A8 /* IOSTViewController.h */,
+				B1BA2DA619C4E66C00F496A8 /* IOSTViewController.m */,
 			);
 			path = "iOS Test";
 			sourceTree = "<group>";
@@ -128,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				B19B316D19C49EF200945FFC /* iOS Test-Info.plist */,
+				B19B319C19C4D20A00945FFC /* Main.storyboard */,
 				B19B316E19C49EF200945FFC /* InfoPlist.strings */,
 				B19B317119C49EF200945FFC /* main.m */,
 				B19B317319C49EF200945FFC /* iOS Test-Prefix.pch */,
@@ -201,6 +209,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Bill Boyer";
 				TargetAttributes = {
+					B19B315F19C49EF200945FFC = {
+						DevelopmentTeam = Z6W7HF6HWM;
+					};
 					B19B317F19C49EF200945FFC = {
 						TestTargetID = B19B315F19C49EF200945FFC;
 					};
@@ -231,6 +242,7 @@
 			files = (
 				B19B317019C49EF200945FFC /* InfoPlist.strings in Resources */,
 				B19B317B19C49EF200945FFC /* Images.xcassets in Resources */,
+				B19B319A19C4D20A00945FFC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B19B317219C49EF200945FFC /* main.m in Sources */,
+				B1BA2DA719C4E66C00F496A8 /* IOSTViewController.m in Sources */,
 				B19B317919C49EF200945FFC /* iOS_Test.xcdatamodeld in Sources */,
 				B19B317619C49EF200945FFC /* IOSTAppDelegate.m in Sources */,
 			);
@@ -288,6 +301,14 @@
 				B19B318C19C49EF200945FFC /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B19B319C19C4D20A00945FFC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B19B319B19C4D20A00945FFC /* en */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -370,10 +391,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOS Test/iOS Test-Prefix.pch";
 				INFOPLIST_FILE = "iOS Test/iOS Test-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -383,10 +408,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOS Test/iOS Test-Prefix.pch";
 				INFOPLIST_FILE = "iOS Test/iOS Test-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -450,6 +479,7 @@
 				B19B319419C49EF200945FFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B19B319519C49EF200945FFC /* Build configuration list for PBXNativeTarget "iOS TestTests" */ = {
 			isa = XCConfigurationList;
@@ -458,6 +488,7 @@
 				B19B319719C49EF200945FFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

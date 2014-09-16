@@ -7,6 +7,7 @@
 //
 
 #import "IOSTViewController.h"
+#import "IOSTAppDelegate.h"
 
 @interface IOSTViewController ()
 
@@ -26,7 +27,32 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self initResultsController];
+}
+
+- (void) initResultsController
+{
+    IOSTAppDelegate *app = (IOSTAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    self.managedObjectContext = app.managedObjectContext;
+
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Image"];
+
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    self.fetchedResultsController = [[NSFetchedResultsController alloc]
+                                              initWithFetchRequest:fetchRequest
+                                              managedObjectContext:self.managedObjectContext
+                                              sectionNameKeyPath:nil
+                                              cacheName:nil];
+
+    NSError *error;
+    if (![self.fetchedResultsController performFetch:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -38,30 +64,64 @@
 - (IBAction)test:(id)sender
 {
     NSLog(@"works!");
+
+    NSManagedObject *newImage = [NSEntityDescription
+                                    insertNewObjectForEntityForName:@"Image"
+                                    inManagedObjectContext:self.managedObjectContext];
+    
+    [newImage setValue:@"x" forKey:@"name"];
+    [newImage setValue:@"y" forKey:@"url"];
+    
+    NSError *error = nil;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 20;
+    return [[self.fetchedResultsController sections] count];
+}
+
+- (NSInteger)tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section
+{
+    if ([[self.fetchedResultsController sections] count] > 0) {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+        return [sectionInfo numberOfObjects];
+    }
+    else
+        return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *label = [NSString stringWithFormat:@"%lu", (unsigned long)[indexPath row]];
+    NSManagedObject *managedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+
+    NSString *label = [NSString stringWithFormat:@"%@ %lu", [managedObject valueForKey:@"name"], (unsigned long)[indexPath row]];
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:label];
     cell.textLabel.text = label;
+    
     return cell;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[self.fetchedResultsController sections] count] > 0) {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+        return [sectionInfo name];
+    } else
+        return nil;
 }
-*/
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    return [self.fetchedResultsController sectionIndexTitles];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+{
+    return [self.fetchedResultsController sectionForSectionIndexTitle:title atIndex:index];
+}
 
 @end

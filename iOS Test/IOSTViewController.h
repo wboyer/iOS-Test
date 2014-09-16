@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IOSTViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface IOSTViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) IBOutlet NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) IBOutlet NSFetchedResultsController *fetchedResultsController;
 
 - (IBAction)test:(id)sender;
 

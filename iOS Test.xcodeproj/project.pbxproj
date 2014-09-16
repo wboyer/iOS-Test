@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B16F66D319C7A987002CBAAA /* iOS_Test.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B16F66D119C7A987002CBAAA /* iOS_Test.xcdatamodeld */; };
 		B19B316419C49EF200945FFC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B19B316319C49EF200945FFC /* Foundation.framework */; };
 		B19B316619C49EF200945FFC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B19B316519C49EF200945FFC /* CoreGraphics.framework */; };
 		B19B316819C49EF200945FFC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B19B316719C49EF200945FFC /* UIKit.framework */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B16F66D219C7A987002CBAAA /* iOS_Test.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOS_Test.xcdatamodel; sourceTree = "<group>"; };
 		B19B316019C49EF200945FFC /* iOS Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B19B316319C49EF200945FFC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B19B316519C49EF200945FFC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -136,6 +138,7 @@
 			children = (
 				B19B316D19C49EF200945FFC /* iOS Test-Info.plist */,
 				B19B319C19C4D20A00945FFC /* Main.storyboard */,
+				B16F66D119C7A987002CBAAA /* iOS_Test.xcdatamodeld */,
 				B19B316E19C49EF200945FFC /* InfoPlist.strings */,
 				B19B317119C49EF200945FFC /* main.m */,
 				B19B317319C49EF200945FFC /* iOS Test-Prefix.pch */,
@@ -263,6 +266,7 @@
 			files = (
 				B19B317219C49EF200945FFC /* main.m in Sources */,
 				B1BA2DA719C4E66C00F496A8 /* IOSTViewController.m in Sources */,
+				B16F66D319C7A987002CBAAA /* iOS_Test.xcdatamodeld in Sources */,
 				B19B317919C49EF200945FFC /* iOS_Test.xcdatamodeld in Sources */,
 				B19B317619C49EF200945FFC /* IOSTAppDelegate.m in Sources */,
 			);
@@ -493,6 +497,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		B16F66D119C7A987002CBAAA /* iOS_Test.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B16F66D219C7A987002CBAAA /* iOS_Test.xcdatamodel */,
+			);
+			currentVersion = B16F66D219C7A987002CBAAA /* iOS_Test.xcdatamodel */;
+			path = iOS_Test.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		B19B317719C49EF200945FFC /* iOS_Test.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

@@ -7,7 +7,6 @@
         <!--View Controller-->
         <scene sceneID="oQr-G9-yqw">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3F3-Xk-TZm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="D7l-TF-VYB" customClass="IOSTViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YXn-vh-oh4"/>
@@ -90,6 +89,7 @@
                         <outlet property="tableView" destination="TtI-HS-r6U" id="gSb-k9-Bhx"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3F3-Xk-TZm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="100" y="-978"/>
         </scene>

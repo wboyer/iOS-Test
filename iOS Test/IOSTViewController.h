@@ -16,7 +16,9 @@
 @property (strong, nonatomic) IBOutlet NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) IBOutlet NSFetchedResultsController *fetchedResultsController;
 
-- (IBAction)test:(id)sender;
+- (IBAction)addMore:(id)sender;
+- (IBAction)toggleEditing:(id)sender;
+- (IBAction)deleteAll:(id)sender;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;

@@ -16,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HI THERE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdZ-nD-IGE">
-                                <rect key="frame" x="325" y="50" width="119" height="30"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Testing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdZ-nD-IGE">
+                                <rect key="frame" x="341" y="40" width="87" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.68518242969999998" green="1" blue="0.75496310619999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="25"/>
@@ -30,7 +30,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="TtI-HS-r6U">
-                                <rect key="frame" x="20" y="110" width="728" height="894"/>
+                                <rect key="frame" x="20" y="90" width="728" height="884"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -60,26 +60,50 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgf-fo-dJH">
-                                <rect key="frame" x="702" y="30" width="46" height="30"/>
+                                <rect key="frame" x="20" y="982" width="81" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Add 5 More">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="test:" destination="D7l-TF-VYB" eventType="touchUpInside" id="i2m-zJ-kVt"/>
+                                    <action selector="addMore:" destination="D7l-TF-VYB" eventType="touchUpInside" id="INP-0h-tDS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pc2-SZ-ZAI">
+                                <rect key="frame" x="131" y="982" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Edit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="toggleEditing:" destination="D7l-TF-VYB" eventType="touchUpInside" id="Ern-DT-Ut3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UhO-GQ-R1U">
+                                <rect key="frame" x="191" y="982" width="65" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Delete All">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteAll:" destination="D7l-TF-VYB" eventType="touchUpInside" id="Uuf-CL-m5X"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.97367464961290762" green="0.94569136463525139" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="TtI-HS-r6U" firstAttribute="top" secondItem="YXn-vh-oh4" secondAttribute="bottom" constant="90" id="72p-YB-qAZ"/>
-                            <constraint firstItem="pdZ-nD-IGE" firstAttribute="top" secondItem="YXn-vh-oh4" secondAttribute="bottom" constant="30" id="CL7-Sb-0Ss"/>
-                            <constraint firstItem="qgf-fo-dJH" firstAttribute="top" secondItem="YXn-vh-oh4" secondAttribute="bottom" constant="10" id="E2d-tR-bVZ"/>
+                            <constraint firstItem="UhO-GQ-R1U" firstAttribute="leading" secondItem="Pc2-SZ-ZAI" secondAttribute="trailing" constant="30" id="59A-84-NKX"/>
+                            <constraint firstItem="uS0-Zv-rCb" firstAttribute="top" secondItem="qgf-fo-dJH" secondAttribute="bottom" constant="12" id="5iW-8d-x42"/>
+                            <constraint firstItem="TtI-HS-r6U" firstAttribute="top" secondItem="YXn-vh-oh4" secondAttribute="bottom" constant="70" id="72p-YB-qAZ"/>
+                            <constraint firstItem="pdZ-nD-IGE" firstAttribute="top" secondItem="YXn-vh-oh4" secondAttribute="bottom" constant="20" id="CL7-Sb-0Ss"/>
+                            <constraint firstItem="uS0-Zv-rCb" firstAttribute="top" secondItem="UhO-GQ-R1U" secondAttribute="bottom" constant="12" id="Gb1-Ie-U89"/>
                             <constraint firstItem="pdZ-nD-IGE" firstAttribute="centerX" secondItem="Zyc-u3-Qcv" secondAttribute="centerX" id="Hfb-wi-23y"/>
-                            <constraint firstItem="qgf-fo-dJH" firstAttribute="trailing" secondItem="Zyc-u3-Qcv" secondAttribute="trailing" constant="-20" id="IaY-fh-Rrg"/>
+                            <constraint firstItem="qgf-fo-dJH" firstAttribute="leading" secondItem="Zyc-u3-Qcv" secondAttribute="leading" constant="20" id="IaY-fh-Rrg"/>
+                            <constraint firstItem="uS0-Zv-rCb" firstAttribute="top" secondItem="Pc2-SZ-ZAI" secondAttribute="bottom" constant="12" id="Qf1-xx-oQF"/>
+                            <constraint firstItem="Pc2-SZ-ZAI" firstAttribute="leading" secondItem="qgf-fo-dJH" secondAttribute="trailing" constant="30" id="akV-1U-UId"/>
                             <constraint firstAttribute="trailing" secondItem="TtI-HS-r6U" secondAttribute="trailing" constant="20" id="dBz-Dg-2IZ"/>
                             <constraint firstItem="TtI-HS-r6U" firstAttribute="leading" secondItem="Zyc-u3-Qcv" secondAttribute="leading" constant="20" id="g5V-Np-ao9"/>
-                            <constraint firstItem="uS0-Zv-rCb" firstAttribute="top" secondItem="TtI-HS-r6U" secondAttribute="bottom" constant="20" id="wDO-pc-YyN"/>
+                            <constraint firstItem="uS0-Zv-rCb" firstAttribute="top" secondItem="TtI-HS-r6U" secondAttribute="bottom" constant="50" id="wDO-pc-YyN"/>
                             <constraint firstItem="TtI-HS-r6U" firstAttribute="centerX" secondItem="Zyc-u3-Qcv" secondAttribute="centerX" id="wqM-3b-vUq"/>
                         </constraints>
                     </view>

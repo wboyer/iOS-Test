@@ -8,19 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IOSTViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate>
+#import "IOSTDataSet.h"
+
+@interface IOSTViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (strong, nonatomic) IBOutlet NSManagedObjectContext *managedObjectContext;
-@property (strong, nonatomic) IBOutlet NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) IOSTDataSet *dataSet;
 
-- (IBAction)addMore:(id)sender;
-- (IBAction)toggleEditing:(id)sender;
-- (IBAction)deleteAll:(id)sender;
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (IBAction)addMoreData:(id)sender;
+- (IBAction)toggleEditingMode:(id)sender;
+- (IBAction)deleteAllData:(id)sender;
 
 @end

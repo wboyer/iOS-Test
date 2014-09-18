@@ -47,7 +47,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="addMore:" destination="D7l-TF-VYB" eventType="touchUpInside" id="INP-0h-tDS"/>
+                                    <action selector="addMoreData:" destination="D7l-TF-VYB" eventType="touchUpInside" id="INP-0h-tDS"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pc2-SZ-ZAI">
@@ -57,7 +57,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="toggleEditing:" destination="D7l-TF-VYB" eventType="touchUpInside" id="Ern-DT-Ut3"/>
+                                    <action selector="toggleEditingMode:" destination="D7l-TF-VYB" eventType="touchUpInside" id="Ern-DT-Ut3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UhO-GQ-R1U">
@@ -67,7 +67,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="deleteAll:" destination="D7l-TF-VYB" eventType="touchUpInside" id="Uuf-CL-m5X"/>
+                                    <action selector="deleteAllData:" destination="D7l-TF-VYB" eventType="touchUpInside" id="Uuf-CL-m5X"/>
                                 </connections>
                             </button>
                         </subviews>

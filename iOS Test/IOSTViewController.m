@@ -21,6 +21,8 @@
 
     IOSTAppDelegate *app = (IOSTAppDelegate *)[[UIApplication sharedApplication] delegate];
     self.dataSet = [[IOSTDataSet alloc] initWithManagedObjectContext:app.managedObjectContext tableView:self.tableView];
+
+    self.animations = [[IOSTAnimations alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -36,7 +38,14 @@
 
 - (IBAction)toggleEditingMode:(id)sender;
 {
-    [self.tableView setEditing:!self.tableView.editing animated:true];
+    if (self.tableView.editing) {
+        [self.animations enable];
+        [self.tableView setEditing:NO animated:true];
+    }
+    else {
+        [self.animations disable];
+        [self.tableView setEditing:YES animated:true];
+    }
 }
 
 - (IBAction)deleteAllData:(id)sender;
@@ -71,13 +80,15 @@
     
     if (imageData)
         cell.imageView.image = [UIImage imageWithData:imageData];
-    
+
+    [self.animations addCell:cell];
+
     return cell;
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return UITableViewCellEditingStyleDelete;
+    return self.tableView.editing ? UITableViewCellEditingStyleDelete : UITableViewCellEditingStyleNone;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section

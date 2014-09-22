@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "IOSTDataSet.h"
+#import "IOSTAnimations.h"
 
 @interface IOSTViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
@@ -16,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) IOSTDataSet *dataSet;
+
+@property (strong, nonatomic) IOSTAnimations *animations;
 
 - (IBAction)addMoreData:(id)sender;
 - (IBAction)toggleEditingMode:(id)sender;

@@ -10,22 +10,26 @@
 	<string>iOS Test</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>B1010D8899B78248E9438F20E4925B3D4B117540</key>
+		<string>https://github.com/wboyer/iOS-Test.git</string>
 		<key>FFF2C7D7-04C5-44AF-93C6-CE03D4511EF5</key>
 		<string>https://github.com/wboyer/iOS-Test.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>iOS Test.xcodeproj/project.xcworkspace</string>
+	<string>iOS Test.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>FFF2C7D7-04C5-44AF-93C6-CE03D4511EF5</key>
+		<key>B1010D8899B78248E9438F20E4925B3D4B117540</key>
 		<string>../..</string>
+		<key>FFF2C7D7-04C5-44AF-93C6-CE03D4511EF5</key>
+		<string>../../../iOS Test</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/wboyer/iOS-Test.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>FFF2C7D7-04C5-44AF-93C6-CE03D4511EF5</string>
+	<string>B1010D8899B78248E9438F20E4925B3D4B117540</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -35,6 +39,14 @@
 			<string>FFF2C7D7-04C5-44AF-93C6-CE03D4511EF5</string>
 			<key>IDESourceControlWCCName</key>
 			<string>iOS Test</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B1010D8899B78248E9438F20E4925B3D4B117540</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iOS%20Test</string>
 		</dict>
 	</array>
 </dict>

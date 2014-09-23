@@ -86,7 +86,12 @@
                 [movement addLinearVelocity:CGPointMake(velocity.x, 0.0) forItem:view];
 
                 [animator addBehavior:movement];
-
+                NSLog(@"%f", superView.frame.origin.x);
+                UICollisionBehavior *boundary = [[UICollisionBehavior alloc] initWithItems:@[view]];
+                [boundary addBoundaryWithIdentifier:@"right" fromPoint:CGPointMake(2.0*superView.frame.size.width-100.0, 0) toPoint:CGPointMake(2.0*superView.frame.size.width-100.0, superView.frame.size.height)];
+                boundary.collisionDelegate = self;
+                [animator addBehavior:boundary];
+                
                 [self.animations setObject:animator forKey:view];
             }
             break;

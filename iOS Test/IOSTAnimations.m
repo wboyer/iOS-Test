@@ -7,6 +7,7 @@
 //
 
 #import "IOSTAnimations.h"
+#import "IOSTAnimator.h"
 
 @implementation IOSTAnimations
 
@@ -24,7 +25,7 @@
  
     self.enabled = YES;
     
-    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(logMotion:) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(monitorMotion:) userInfo:nil repeats:YES];
     
     return self;
 }
@@ -38,17 +39,6 @@
 {
     [self.animations removeAllObjects];
     self.enabled = NO;
-}
-
-- (void)logMotion:(NSTimer *)timer
-{
-    if (!self.enabled)
-        return;
-    
-    CMDeviceMotion *motion = self.motionManager.deviceMotion;
-    
-    CMAcceleration gravity = motion.gravity;
-    NSLog(@"%5.2f %5.2f %5.2f", gravity.x, gravity.y, gravity.z);
 }
 
 - (void)addCell:(UITableViewCell *)cell
@@ -69,15 +59,7 @@
     CGRect frame = view.frame;
     
     float leftEdge = 0;
-    float rightEdge = superView.frame.size.width;
-
-    for (UIView *subview in view.subviews)
-        if ([subview isKindOfClass:[UILabel class]]) {
-            UILabel *label = (UILabel *)subview;
-            CGSize textSize = [[label text] sizeWithAttributes:@{NSFontAttributeName:[label font]}];
-            rightEdge -= textSize.width + label.frame.origin.x + 5;
-            break;
-        }
+    float rightEdge = [IOSTAnimator spaceOnRightForView:view andReferenceView:superView];
 
     CGPoint translation = [recognizer translationInView:superView];
     CGPoint velocity = [recognizer velocityInView:superView];
@@ -90,30 +72,15 @@
 
         case UIGestureRecognizerStateEnded:
             if ([UIDynamicAnimator class]) {
-                UIDynamicAnimator *animator = [[UIDynamicAnimator alloc] initWithReferenceView:superView];
+                IOSTAnimator *animator = [[IOSTAnimator alloc] initWithView:view andReferenceView:superView];
                 animator.delegate = self;
+                
+                [animator setBoundaries:rightEdge];
 
                 UIDynamicItemBehavior *movement = [[UIDynamicItemBehavior alloc] initWithItems:@[view]];
                 [movement addLinearVelocity:CGPointMake(velocity.x, 0.0) forItem:view];
                 [animator addBehavior:movement];
                 
-                UICollisionBehavior *boundary = [[UICollisionBehavior alloc] initWithItems:@[view]];
-                [boundary addBoundaryWithIdentifier:@"left"
-                                          fromPoint:CGPointMake(0, 0)
-                                            toPoint:CGPointMake(0, superView.frame.size.height)];
-
-                boundary.collisionDelegate = self;
-                [animator addBehavior:boundary];
-                
-                float rightBoundary = rightEdge + superView.frame.size.width;
-                boundary = [[UICollisionBehavior alloc] initWithItems:@[view]];
-                [boundary addBoundaryWithIdentifier:@"right"
-                                          fromPoint:CGPointMake(rightBoundary, 0)
-                                            toPoint:CGPointMake(rightBoundary, superView.frame.size.height)];
-
-                boundary.collisionDelegate = self;
-                [animator addBehavior:boundary];
-
                 [self.animations setObject:animator forKey:view];
             }
             break;
@@ -125,17 +92,46 @@
     }
 }
 
-- (void)collisionBehavior:(UICollisionBehavior *)behavior beganContactForItem:(id<UIDynamicItem>)item
-                    withBoundaryIdentifier:(id<NSCopying>)identifier atPoint:(CGPoint)p
+- (void)monitorMotion:(NSTimer *)timer
 {
-}
+    if (!self.enabled)
+        return;
+    
+    CMDeviceMotion *motion = self.motionManager.deviceMotion;
+    
+    CMAcceleration gravity = motion.gravity;
 
-- (void)dynamicAnimatorDidPause:(UIDynamicAnimator *)animator
-{
-}
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
 
-- (void)dynamicAnimatorWillResume:(UIDynamicAnimator *)animator
-{
+    float horizontalGravity = gravity.x;
+
+    switch (orientation) {
+        case UIInterfaceOrientationPortraitUpsideDown:
+            horizontalGravity *= -1;
+            break
+            ;
+        case UIInterfaceOrientationLandscapeLeft:
+            horizontalGravity = gravity.y;
+            break
+            ;
+        case UIInterfaceOrientationLandscapeRight:
+            horizontalGravity = -gravity.y;
+            break
+            ;
+        default:
+            break;
+    }
+
+    NSEnumerator *enumerator = [self.animations objectEnumerator];
+    IOSTAnimator *animator;
+    
+    while ((animator = [enumerator nextObject])) {
+        [animator setGravityDirection:CGVectorMake(horizontalGravity, 0.0)];
+        if (orientation != self.lastOrientation)
+            [animator setBoundaries];
+    }
+    
+    self.lastOrientation = orientation;
 }
 
 @end

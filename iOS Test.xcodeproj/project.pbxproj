@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B119D3BA19D1BF5D004E9F58 /* IOSTAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B119D3B919D1BF5D004E9F58 /* IOSTAnimator.m */; };
 		B151378919CA4F7C001E68AC /* IOSTDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = B151378819CA4F7C001E68AC /* IOSTDataSet.m */; };
 		B16F66D319C7A987002CBAAA /* iOS_Test.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B16F66D119C7A987002CBAAA /* iOS_Test.xcdatamodeld */; };
 		B18641D219CE203F004D8097 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B18641D119CE203F004D8097 /* QuartzCore.framework */; };
@@ -41,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B119D3B819D1BF5D004E9F58 /* IOSTAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSTAnimator.h; sourceTree = "<group>"; };
+		B119D3B919D1BF5D004E9F58 /* IOSTAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IOSTAnimator.m; sourceTree = "<group>"; };
 		B151378719CA4F7C001E68AC /* IOSTDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSTDataSet.h; sourceTree = "<group>"; };
 		B151378819CA4F7C001E68AC /* IOSTDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IOSTDataSet.m; sourceTree = "<group>"; };
 		B16F66D219C7A987002CBAAA /* iOS_Test.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOS_Test.xcdatamodel; sourceTree = "<group>"; };
@@ -141,6 +144,8 @@
 				B1BA2DA619C4E66C00F496A8 /* IOSTViewController.m */,
 				B18641D319D05C3F004D8097 /* IOSTAnimations.h */,
 				B18641D419D05C3F004D8097 /* IOSTAnimations.m */,
+				B119D3B819D1BF5D004E9F58 /* IOSTAnimator.h */,
+				B119D3B919D1BF5D004E9F58 /* IOSTAnimator.m */,
 				B151378719CA4F7C001E68AC /* IOSTDataSet.h */,
 				B151378819CA4F7C001E68AC /* IOSTDataSet.m */,
 			);
@@ -281,6 +286,7 @@
 				B19B317219C49EF200945FFC /* main.m in Sources */,
 				B1BA2DA719C4E66C00F496A8 /* IOSTViewController.m in Sources */,
 				B16F66D319C7A987002CBAAA /* iOS_Test.xcdatamodeld in Sources */,
+				B119D3BA19D1BF5D004E9F58 /* IOSTAnimator.m in Sources */,
 				B19B317919C49EF200945FFC /* iOS_Test.xcdatamodeld in Sources */,
 				B18641D519D05C3F004D8097 /* IOSTAnimations.m in Sources */,
 				B19B317619C49EF200945FFC /* IOSTAppDelegate.m in Sources */,

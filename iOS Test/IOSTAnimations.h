@@ -16,6 +16,7 @@
 @property (strong, nonatomic) CMMotionManager *motionManager;
 
 @property BOOL enabled;
+@property UIInterfaceOrientation lastOrientation;
 
 - (id)init;
 

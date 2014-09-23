@@ -72,7 +72,7 @@
 {
     NSManagedObject *managedObject = [self.dataSet.fetchedResultsController objectAtIndexPath:indexPath];
 
-    NSString *label = [NSString stringWithFormat:@"%@ %lu", [managedObject valueForKey:@"name"], (unsigned long)[indexPath row]];
+    NSString *label = [NSString stringWithFormat:@"%@ Row %lu in result set.", [managedObject valueForKey:@"name"], (unsigned long)[indexPath row]];
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:label];
     cell.textLabel.text = label;
     

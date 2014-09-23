@@ -58,7 +58,7 @@
              
              [newImage setValue:data forKey:@"data"];
              
-             [newImage setValue:@"x" forKey:@"name"];
+             [newImage setValue:@"This is a long title." forKey:@"name"];
              [newImage setValue:@"y" forKey:@"url"];
              
              if (![self.managedObjectContext save:&error]) {

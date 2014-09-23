@@ -67,10 +67,21 @@
     UIView *superView = view.superview;
 
     CGRect frame = view.frame;
+    
+    float leftEdge = 0;
+    float rightEdge = superView.frame.size.width;
+
+    for (UIView *subview in view.subviews)
+        if ([subview isKindOfClass:[UILabel class]]) {
+            UILabel *label = (UILabel *)subview;
+            CGSize textSize = [[label text] sizeWithAttributes:@{NSFontAttributeName:[label font]}];
+            rightEdge -= textSize.width + label.frame.origin.x + 5;
+            break;
+        }
 
     CGPoint translation = [recognizer translationInView:superView];
     CGPoint velocity = [recognizer velocityInView:superView];
-    
+
     switch (recognizer.state) {
         case UIGestureRecognizerStateBegan:
             [self.animations removeObjectForKey:view];
@@ -84,20 +95,32 @@
 
                 UIDynamicItemBehavior *movement = [[UIDynamicItemBehavior alloc] initWithItems:@[view]];
                 [movement addLinearVelocity:CGPointMake(velocity.x, 0.0) forItem:view];
-
                 [animator addBehavior:movement];
-                NSLog(@"%f", superView.frame.origin.x);
+                
                 UICollisionBehavior *boundary = [[UICollisionBehavior alloc] initWithItems:@[view]];
-                [boundary addBoundaryWithIdentifier:@"right" fromPoint:CGPointMake(2.0*superView.frame.size.width-100.0, 0) toPoint:CGPointMake(2.0*superView.frame.size.width-100.0, superView.frame.size.height)];
+                [boundary addBoundaryWithIdentifier:@"left"
+                                          fromPoint:CGPointMake(0, 0)
+                                            toPoint:CGPointMake(0, superView.frame.size.height)];
+
                 boundary.collisionDelegate = self;
                 [animator addBehavior:boundary];
                 
+                float rightBoundary = rightEdge + superView.frame.size.width;
+                boundary = [[UICollisionBehavior alloc] initWithItems:@[view]];
+                [boundary addBoundaryWithIdentifier:@"right"
+                                          fromPoint:CGPointMake(rightBoundary, 0)
+                                            toPoint:CGPointMake(rightBoundary, superView.frame.size.height)];
+
+                boundary.collisionDelegate = self;
+                [animator addBehavior:boundary];
+
                 [self.animations setObject:animator forKey:view];
             }
             break;
              
         default:
-            [view setFrame:CGRectMake(translation.x, 0, frame.size.width, frame.size.height)];
+            if ((translation.x >= leftEdge) && (translation.x < rightEdge))
+                [view setFrame:CGRectMake(translation.x, 0, frame.size.width, frame.size.height)];
             break;
     }
 }

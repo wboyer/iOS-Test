@@ -38,6 +38,9 @@
     [self setGravityDirection:CGVectorMake(0.0, 0.0)];
 
     self.motionBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[self.view]];
+    self.motionBehavior.allowsRotation = NO;
+    self.motionBehavior.elasticity = 0.5;
+     
     [self addBehavior:self.motionBehavior];
 
     UICollisionBehavior *boundary = [[UICollisionBehavior alloc] initWithItems:@[view]];

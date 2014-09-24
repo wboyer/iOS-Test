@@ -134,8 +134,8 @@
         [animator setGravityDirection:CGVectorMake(horizontalGravity, 0.0)];        
         //[animator addVelocity:CGPointMake(horizontalAcceleration * 1000, 0.0)];
 
-        if (orientation != self.lastOrientation)
-            [animator setBoundaries];
+        //if (orientation != self.lastOrientation)
+            //[animator setBoundaries];
     }
     
     self.lastOrientation = orientation;

@@ -9,5 +9,5 @@ This is an iOS app for miscellaneous prototyping.  Currently it demonstrates the
 - Using UITableView's editing mode to enable row deletion.
 - [NSURLConnection](https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/URLLoadingSystem/Tasks/UsingNSURLConnection.html) to fetch asynchronously via HTTP.
 - [UIPanGestureRecognizer](https://developer.apple.com/library/IOs/documentation/UIKit/Reference/UIPanGestureRecognizer_Class/index.html) to detect pan (i.e., drag) gestures.
-- [Core Animation](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.html) to move things around.
+- [UIKit Dynamics](https://developer.apple.com/library/ios/documentation/uikit/reference/UIDynamicAnimator_Class/index.html) to move things around.
 - [Core Motion](https://developer.apple.com/library/iOs/documentation/CoreMotion/Reference/CoreMotion_Reference/index.html) to apply gravity effects.

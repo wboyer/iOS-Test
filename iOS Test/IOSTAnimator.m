@@ -37,6 +37,9 @@
 
     [self setGravityDirection:CGVectorMake(0.0, 0.0)];
 
+    self.motionBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[self.view]];
+    [self addBehavior:self.motionBehavior];
+
     UICollisionBehavior *boundary = [[UICollisionBehavior alloc] initWithItems:@[view]];
     [self addBehavior:boundary];
     self.leftBoundary = boundary;
@@ -51,6 +54,11 @@
 - (void)setGravityDirection:(CGVector)gravityDirection
 {
     self.gravityBehavior.gravityDirection = gravityDirection;
+}
+
+- (void)addVelocity:(CGPoint)velocity
+{
+    [self.motionBehavior addLinearVelocity:velocity forItem:self.view];
 }
 
 - (void)setBoundaries:(float)rightEdge

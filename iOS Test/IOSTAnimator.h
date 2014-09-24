@@ -13,6 +13,7 @@
 @property (strong, nonatomic) UIView *view;
 
 @property (strong, nonatomic) UIGravityBehavior *gravityBehavior;
+@property (strong, nonatomic) UIDynamicItemBehavior *motionBehavior;
 
 @property (strong, nonatomic) UICollisionBehavior *leftBoundary;
 @property (strong, nonatomic) UICollisionBehavior *rightBoundary;
@@ -22,6 +23,8 @@
 - (IOSTAnimator *)initWithView:(UIView *)view andReferenceView:(UIView *)referenceView;
 
 - (void)setGravityDirection:(CGVector)gravityDirection;
+- (void)addVelocity:(CGPoint)velocity;
+
 - (void)setBoundaries:(float)rightEdge;
 - (void)setBoundaries;
 

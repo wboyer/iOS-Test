@@ -77,10 +77,8 @@
                 
                 [animator setBoundaries:rightEdge];
 
-                UIDynamicItemBehavior *movement = [[UIDynamicItemBehavior alloc] initWithItems:@[view]];
-                [movement addLinearVelocity:CGPointMake(velocity.x, 0.0) forItem:view];
-                [animator addBehavior:movement];
-                
+                [animator addVelocity:CGPointMake(velocity.x, 0.0)];
+
                 [self.animations setObject:animator forKey:view];
             }
             break;
@@ -100,22 +98,27 @@
     CMDeviceMotion *motion = self.motionManager.deviceMotion;
     
     CMAcceleration gravity = motion.gravity;
+    CMAcceleration acceleration = motion.userAcceleration;
 
     UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
 
     float horizontalGravity = gravity.x;
+    float horizontalAcceleration = acceleration.x;
 
     switch (orientation) {
         case UIInterfaceOrientationPortraitUpsideDown:
             horizontalGravity *= -1;
+            horizontalAcceleration *= -1;
             break
             ;
         case UIInterfaceOrientationLandscapeLeft:
             horizontalGravity = gravity.y;
+            horizontalAcceleration = acceleration.y;
             break
             ;
         case UIInterfaceOrientationLandscapeRight:
             horizontalGravity = -gravity.y;
+            horizontalAcceleration = -acceleration.y;
             break
             ;
         default:
@@ -124,9 +127,13 @@
 
     NSEnumerator *enumerator = [self.animations objectEnumerator];
     IOSTAnimator *animator;
+
+    //NSLog(@"%5.2f %5.2f", acceleration.y, horizontalAcceleration);
     
     while ((animator = [enumerator nextObject])) {
-        [animator setGravityDirection:CGVectorMake(horizontalGravity, 0.0)];
+        [animator setGravityDirection:CGVectorMake(horizontalGravity, 0.0)];        
+        //[animator addVelocity:CGPointMake(horizontalAcceleration * 1000, 0.0)];
+
         if (orientation != self.lastOrientation)
             [animator setBoundaries];
     }

@@ -129,15 +129,15 @@
     IOSTAnimator *animator;
 
     //NSLog(@"%5.2f %5.2f", acceleration.y, horizontalAcceleration);
-    
-    while ((animator = [enumerator nextObject])) {
-        [animator setGravityDirection:CGVectorMake(horizontalGravity, 0.0)];        
-        //[animator addVelocity:CGPointMake(horizontalAcceleration * 1000, 0.0)];
 
-        //if (orientation != self.lastOrientation)
-            //[animator setBoundaries];
-    }
-    
+    if (orientation != self.lastOrientation)
+        [self.animations removeAllObjects];
+    else
+        while ((animator = [enumerator nextObject])) {
+            [animator setGravityDirection:CGVectorMake(horizontalGravity, 0.0)];
+            //[animator addVelocity:CGPointMake(horizontalAcceleration * 1000, 0.0)];
+        }
+
     self.lastOrientation = orientation;
 }
 
